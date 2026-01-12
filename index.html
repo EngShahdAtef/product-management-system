@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>js</title>
+</head>
+
+<body class="bg-dark">
+    <div class="container ">
+        <h1 class="text-center my-5 fw-bold text-capitalize text-warning">Product management system</h1>
+        <div class="mb-5">
+            <!-- name -->
+            <div class="form-floating my-3   ">
+                <input type="text" class="form-control border-0 border-bottom border-2 " id="name">
+                <label for="name">product name</label>
+            </div>
+            <!-- price -->
+            <div class="form-floating my-3  ">
+                <input type="number" class="form-control border-0 border-bottom border-2 " id="price">
+                <label for="price">Product price</label>
+            </div>
+            <!-- category -->
+            <div class="form-floating my-3  ">
+                <input type="text" class="form-control border-0 border-bottom border-2 " id="category">
+                <label for="category">Product category</label>
+            </div>
+            <!-- description -->
+            <div class="form-floating my-3  ">
+                <input type="text" class="form-control border-0 border-bottom border-2 " id="Description">
+                <label for="Description">Product Description</label>
+            </div>
+            <!-- image upload -->
+            <div class="mb-3">
+                <input class="form-control" type="file" id="formFile">
+            </div>
+            <button class="btn btn-success fw-bold" onclick="addProduct()">Add Product</button>
+
+        </div>
+        <h1 class="text-center my-5 fw-bold text-capitalize text-warning ">Available Products</h1>
+        <div class="mb-5">
+            <div class="form-floating my-3  ">
+                <input type="text" class="form-control border-0 border-bottom border-2" id="search"
+                    oninput="searchProduct()">
+                <label for="search">search</label>
+            </div>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th class="text-success text-center">ID</th>
+                        <th class="text-success text-center">Product Name</th>
+                        <th class="text-success text-center">Product Price</th>
+                        <th class="text-success text-center">Product Category</th>
+                        <th class="text-success text-center">Product Description</th>
+                        <th class="text-success text-center">Product Image</th>
+                        <th class="text-success text-center">Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="tableData">
+                </tbody>
+            </table>
+        </div>
+
+        <script src="js/bootstrap.bundle.min.js"></script>
+        <script src="js/main.js"></script>
+</body>
+
+</html>
+
+
