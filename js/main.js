@@ -5,6 +5,10 @@ let productCategoryInput = document.getElementById("category");
 let productDescriptionInput = document.getElementById("Description");
 let productImageInput = document.getElementById("formFile");
 let searchProductInput = document.getElementById("search");
+let addBtn = document.getElementById("addBtn");
+let updateBtn = document.getElementById("updateBtn");
+
+let currentIndex = 0;
 
 let productList = [];
 if (localStorage.getItem("productContainer")) {
@@ -59,7 +63,7 @@ function displayProducts() {
           productList[i].image
         }" alt="${productList[i].name}" width="50px"></td>
         <td class="text-center">
-            <button class="btn btn-warning m-2 text-white fw-bold" id="update">Update</button>
+            <button onclick="setUpdateProduct(${i})" class="btn btn-warning m-2 text-white fw-bold" id="update">Update</button>
             <button onclick="deleteItem(${i})" class="btn btn-danger m-2 fw-bold" id="delete">Delete</button>
         </td>
     </tr>
@@ -100,4 +104,30 @@ function searchProduct() {
     }
   }
   document.getElementById("tableData").innerHTML = box;
+}
+
+function setUpdateProduct(index) {
+currentIndex = index;
+productNameInput.value = productList[index].name;
+productPriceInput.value = productList[index].price;
+productCategoryInput.value = productList[index].category;
+productDescriptionInput.value = productList[index].description;
+addBtn.classList.add("d-none");
+updateBtn.classList.remove("d-none")
+}
+
+function updateProduct() {
+  let product = {
+    name: productNameInput.value,
+    price: productPriceInput.value,
+    category: productCategoryInput.value,
+    description: productDescriptionInput.value,
+    image: productImageInput.files[0]? "images/${productImageInput.files[0].name}" : "images/${productList[currentIndex].image}",
+  };
+  productList.splice(currentIndex, 1, product);
+  displayProducts();
+  localStorage.setItem("productContainer", JSON.stringify(productList));
+  clearForm();
+  addBtn.classList.remove("d-none");
+  updateBtn.classList.add("d-none")
 }
